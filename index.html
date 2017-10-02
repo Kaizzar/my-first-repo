@@ -1,9 +1,95 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Title</title>
+        <meta charset="utf-8">
+        <title>Grading System</title>
+        <link rel="stylesheet" href="average.css">
     </head>
     <body>
-        <p>Hello Wordl</p>
-    </body>
+        <p><strong>Number to Letter Grade Converter</strong></p>
+              <table id="TB" align="left">
+                <tr>
+                  <th>Number Grade</th>
+                  <th>Letter Grade</th>
+                </tr>
+                <tr>
+                  <form>
+                    <td><input type="button" name="Number" value="Number Grade" onClick="letter.value=Grade(grade.value);" />  <input name="number" id="grade" required min="0" max="100" maxlength="3" type="text" value="" size="6" /></td>
+                    <td><input type="button" name="Letter" value="Letter Grade" /> <input name="letter grade" id="letter" type="readonly" value="" size"6" /></td>
+                  </form>
+                </tr>
+                <tr>
+                    <form>
+                      <td><input type="button" name="Number" value="Number Grade" onClick="letter2.value=Grade(grade2.value);" />  <input name="number" id="grade2" required min="0" max="100" maxlength="3" type="text" value="" size="6" /></td>
+                      <td><input type="button" name="Letter" value="Letter Grade" /> <input name="letter grade" id="letter2" type="readonly" value="" size"6" /></td>
+                    </form>
+                </tr>
+                <tr>
+                        <form>
+                          <td><input type="button" name="Number" value="Number Grade" onClick="letter3.value=Grade(grade3.value);" />  <input name="number" id="grade3" required min="0" max="100" maxlength="3" type="text" value="" size="6" /></td>
+                          <td><input type="button" name="Letter" value="Letter Grade" /> <input name="letter grade" id="letter3" type="readonly" value="" size"6" /></td>
+                        </form>
+                </tr>
+                <tr>
+                    <form>
+                    <td><input type="button" name="Number" value="Average Number" onClick="average.value=Average();" />  <input name="number" id="average" required min="0" max="100" maxlength="3" type="text" value="" size="6" /></td>
+                    <td><input type="button" name="Letter" value="Average Letter" /> <input name="letter grade" id="letter4" type="readonly" value="" size"6" /></td>
+                    </form> 
+                </tr>
+              </table> 
+        </body>
+    <script type="text/javascript">
+
+    //var size = document.getElementById(TB).rows.length;
+    //var tb = document.getElementById(TB);
+    function Grade(g)
+    {
+        if(g >= 90)
+        return "A";
+        else if(g >=80 && g <=89)
+        return "B";
+        else if(g >=70 && g <=79)
+        return "C";
+        else if(g >=60 && g <=69)
+        return "D";
+        else
+        return "F";
+        
+        
+    }
+    function Average()
+    {
+       var count=0; 
+       var total=0;
+
+       if(Number(document.getElementById("grade").value) >= 0 
+            && Number(document.getElementById("grade").value) <=100 
+            && document.getElementById("grade").value != "")
+        {
+            count++;
+            total+= Number(document.getElementById("grade").value);
+            
+        }
+        if(document.getElementById("grade2").value >= 0 && document.getElementById("grade2").value <=100 
+        && document.getElementById("grade2").value != "")
+        {
+            count++;
+            total+= Number(document.getElementById("grade2").value);
+            
+        }
+        if(document.getElementById("grade3").value >= 0 && document.getElementById("grade3").value <=100 
+        && document.getElementById("grade3").value != "")
+        {
+            count++;
+            total+= Number(document.getElementById("grade3").value);
+            
+        }
+
+        document.getElementById("letter4").value = Grade(total/count);
+        return (total/count);
+    }
+    
+
+    
+    </script>
 </html>
